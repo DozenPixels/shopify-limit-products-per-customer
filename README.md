@@ -72,7 +72,7 @@ We are addint a tooltip to explain what threw the error, to the user, and how to
 
 >You may have more than one `<input type="submit" ...>` tag right next to each other. Add the code above the first one, and check to see how it looks. The code in this step is simply visual and will not break anything.
 
-4.Now we will disable the checkout button, unless all error are fixed. Find the `<input>` tag with `value="{{ 'cart.checkout' | t}}"` or something very similar. This is the button that takes you to the next checkout step so make sure you disable the right one. Add the following code inside the `<input>` tag:
+4.Now we will disable the checkout button, unless all errors are fixed. Find the `<input>` tag with `value="{{ 'cart.checkout' | t}}"` or something very similar. This is the button that takes you to the next checkout step so make sure you disable the right one. Add the following code inside the `<input>` tag:
 
 ```html
 {% for item in cart.items %}{% for tag in item.product.tags %}{% if tag == "limited" and item.quantity > 5 %}disabled{% endif %}{% endfor %}{% endfor %}
