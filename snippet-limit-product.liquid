@@ -1,0 +1,7 @@
+{% for tag in product.tags %}
+    {% if tag == "limited" %}
+        <div class="bs-callout bs-callout-warning">
+            <b>Limit 5 per customer.</b>
+        </div>
+    {% endif %}
+{% endfor %}
