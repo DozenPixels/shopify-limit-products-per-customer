@@ -34,7 +34,7 @@ This will prevent the user from adding more than **5** items with the tag *limit
 
 >This step requires editing your *cart.liquid* file. Please be careful as you might accidently break the checkout on your website. Backup the file before making any edits.
 
-1. Find the `{% for %}` loop that generates the cart item table. It will usually look like this: `{% for item in cart.items %}`. Ignore the optional `{% if %}` statement you might have immediately following and look for the opening `<tr>` tag. If the tag is empty without any prperties or classes in it, simply replace with the following:
+1.Find the `{% for %}` loop that generates the cart item table. It will usually look like this: `{% for item in cart.items %}`. Ignore the optional `{% if %}` statement you might have immediately following and look for the opening `<tr>` tag. If the tag is empty without any prperties or classes in it, simply replace with the following:
 
 ```html
 <tr {% for tag in item.product.tags %}{% if tag == "limited" and item.quantity > 5 %}class="bs-callout bs-callout-warning"{% endif %}{% endfor %}>
@@ -42,7 +42,7 @@ This will prevent the user from adding more than **5** items with the tag *limit
 
 This will wrap the entire table row in our custom styling to indicate an error.
 
-2. Next, find the closing `</tr>` tag and add the following immediately after:
+2.Next, find the closing `</tr>` tag and add the following immediately after:
 
 ```html
 {% for tag in item.product.tags %}{% if tag == "limited" and item.quantity > 5 %}
@@ -56,7 +56,7 @@ This will wrap the entire table row in our custom styling to indicate an error.
 
 We are addint a tooltip to explain what threw the error, to the user, and how to correct it.
 
-3. Let's add another tool tip directly above the checkout button with a `danger` style. Find the `<input type="submit" ...>` tag, and add the following immediately **above** it:
+3.Let's add another tool tip directly above the checkout button with a `danger` style. Find the `<input type="submit" ...>` tag, and add the following immediately **above** it:
 
 ```html
 {% for item in cart.items %}
@@ -72,10 +72,10 @@ We are addint a tooltip to explain what threw the error, to the user, and how to
 
 >You may have more than one `<input type="submit" ...>` tag right next to each other. Add the code above the first one, and check to see how it looks. The code in this step is simply visual and will not break anything.
 
-4. Now we will disable the checkout button, unless all error are fixed. Find the `<input>` tag with `value="{{ 'cart.checkout' | t}}"` or something very similar. This is the button that takes you to the next checkout step so make sure you disable the right one. Add the following code inside the `<input>` tag:
+4.Now we will disable the checkout button, unless all error are fixed. Find the `<input>` tag with `value="{{ 'cart.checkout' | t}}"` or something very similar. This is the button that takes you to the next checkout step so make sure you disable the right one. Add the following code inside the `<input>` tag:
 
 ```html
 {% for item in cart.items %}{% for tag in item.product.tags %}{% if tag == "limited" and item.quantity > 5 %}disabled{% endif %}{% endfor %}{% endfor %}
 ```
 
-5. Test, test, and test again.
+5.Test, test, and test again.
