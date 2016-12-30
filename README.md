@@ -16,7 +16,7 @@ Add snippet with warning about limited quantity to your *product.liquid* file vi
 
 ####Step 3
 
-Insert the follwing code into your **snippet-quantity.liquid** file as the max parameter in your **<input></input>** tag.
+Insert the following code into your **snippet-quantity.liquid** file as the max parameter in your **<input></input>** tag.
 
 ```html
 {% for tag in product.tags %}{% if tag == "limited" %}max="5"{% endif %}{% endfor %}
